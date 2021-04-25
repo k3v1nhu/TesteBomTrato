@@ -4,6 +4,7 @@ using TesteBomTrato.Repositories;
 using TesteBomTrato.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace TesteBomTrato.Controllers
 {
@@ -19,6 +20,17 @@ namespace TesteBomTrato.Controllers
         }
 
         /// <summary>
+        /// Utilize este método para retornar todos os processos cadastrados
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            var result = await _repo.GetAllProcessosAsync();
+            return Ok(result);
+        }
+
+        /// <summary>
         /// Utilize este método para retornar um processo com base em seu ID
         /// </summary>
         /// <param name="id"></param>
@@ -29,17 +41,6 @@ namespace TesteBomTrato.Controllers
             var result = _repo.GetProcessosById(id);
             if (result == null) return BadRequest("O Processo não foi Encontrado!");
 
-            return Ok(result);
-        }
-
-        /// <summary>
-        /// Utilize este método para retornar todos os processos cadastrados
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var result = _repo.GetAllProcessos();
             return Ok(result);
         }
 

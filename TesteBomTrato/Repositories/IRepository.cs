@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TesteBomTrato.Models;
 
 namespace TesteBomTrato.Repositories
@@ -10,6 +11,6 @@ namespace TesteBomTrato.Repositories
         bool SaveChanges();
 
         Processo GetProcessosById(int processoId);
-        Processo[] GetAllProcessos();
+        Task<Processo[]> GetAllProcessosAsync();
     }
 }

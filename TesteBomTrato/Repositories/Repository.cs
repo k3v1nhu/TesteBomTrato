@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TesteBomTrato.Data;
 using TesteBomTrato.Models;
@@ -32,17 +33,6 @@ namespace TesteBomTrato.Repositories
         {
             return (_context.SaveChanges() > 0);
         }
-
-        public Processo[] GetAllProcessos()
-        {
-            IQueryable<Processo> query = _context.Processos;
-
-            query = query.AsNoTracking()
-                            .OrderBy(p => p.Id);
-
-            return query.ToArray();
-        }
-        
         public Processo GetProcessosById(int processoId)
         {
             IQueryable<Processo> query = _context.Processos;
@@ -52,6 +42,16 @@ namespace TesteBomTrato.Repositories
                             .Where(processo => processo.Id == processoId);
 
             return query.FirstOrDefault();
+        }
+
+        public async Task<Processo[]> GetAllProcessosAsync()
+        {
+            IQueryable<Processo> query = _context.Processos;
+
+            query = query.AsNoTracking()
+                            .OrderBy(p => p.Id);
+
+            return await query.ToArrayAsync();
         }
     }
 }
