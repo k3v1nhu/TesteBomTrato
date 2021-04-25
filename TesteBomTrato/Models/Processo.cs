@@ -14,12 +14,12 @@ namespace TesteBomTrato.Models
             this.ValorCausa = valorCausa;
             this.Escritorio = escritorio;
             this.NomeReclamante = nomeReclamante;
-
         } 
         public int Id { get; set; }
         public int NumeroProcesso { get; set; }
         public string ValorCausa { get; set; }
         public string Escritorio { get; set; }
         public string NomeReclamante { get; set; }
+        public bool Ativo { get; set; } = true;
     }
 }

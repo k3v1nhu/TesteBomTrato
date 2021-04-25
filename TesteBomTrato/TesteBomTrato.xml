@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TesteBomTrato</name>
+    </assembly>
+    <members>
+        <member name="M:TesteBomTrato.Controllers.ProcessoController.Get(System.Int32)">
+            <summary>
+            Utilize este método para retornar um processo com base em seu ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TesteBomTrato.Controllers.ProcessoController.Get">
+            <summary>
+            Utilize este método para retornar todos os processos cadastrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TesteBomTrato.Controllers.ProcessoController.Post(TesteBomTrato.Models.Processo)">
+            <summary>
+            Utilize este método para cadastrar um novo processo
+            </summary>
+            <param name="processo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TesteBomTrato.Controllers.ProcessoController.Put(System.Int32,TesteBomTrato.Models.Processo)">
+            <summary>
+            Utilize este método para modificar informações de um dos processos
+            </summary>
+            <param name="id"></param>
+            <param name="processo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TesteBomTrato.Controllers.ProcessoController.Patch(System.Int32,TesteBomTrato.Models.Processo)">
+            <summary>
+            Utilize este método para ajustar um dos processos
+            </summary>
+            <param name="id"></param>
+            <param name="processo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TesteBomTrato.Controllers.ProcessoController.Delete(System.Int32)">
+            <summary>
+            Utilize este método para deletar um processo
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

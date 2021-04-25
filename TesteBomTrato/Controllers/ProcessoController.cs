@@ -21,6 +21,11 @@ namespace TesteBomTrato.Controllers
 
         }
 
+        /// <summary>
+        /// Utilize este método para retornar um processo com base em seu ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("byId/{id}")]
         public IActionResult Get(int id)
         {
@@ -30,12 +35,21 @@ namespace TesteBomTrato.Controllers
             return Ok(_context.Processos);
         }
 
+        /// <summary>
+        /// Utilize este método para retornar todos os processos cadastrados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_context.Processos);
         }
 
+        /// <summary>
+        /// Utilize este método para cadastrar um novo processo
+        /// </summary>
+        /// <param name="processo"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(Processo processo)
         {
@@ -48,6 +62,12 @@ namespace TesteBomTrato.Controllers
             return BadRequest("Ops... O Processo Não Foi Cadastrado!");
         }
 
+        /// <summary>
+        /// Utilize este método para modificar informações de um dos processos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="processo"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Processo processo)
         {
@@ -63,6 +83,12 @@ namespace TesteBomTrato.Controllers
             return BadRequest("Ops... Tivemos um Problema!");
         }
 
+        /// <summary>
+        /// Utilize este método para ajustar um dos processos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="processo"></param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Processo processo)
         {
@@ -78,6 +104,11 @@ namespace TesteBomTrato.Controllers
             return BadRequest("Ops... Tivemos um Problema!");
         }
 
+        /// <summary>
+        /// Utilize este método para deletar um processo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

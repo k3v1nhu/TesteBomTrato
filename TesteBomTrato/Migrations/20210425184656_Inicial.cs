@@ -2,7 +2,7 @@
 
 namespace TesteBomTrato.Migrations
 {
-    public partial class initial : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,11 +11,12 @@ namespace TesteBomTrato.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     NumeroProcesso = table.Column<int>(nullable: false),
                     ValorCausa = table.Column<string>(nullable: true),
                     Escritorio = table.Column<string>(nullable: true),
-                    NomeReclamante = table.Column<string>(nullable: true)
+                    NomeReclamante = table.Column<string>(nullable: true),
+                    Ativo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -24,8 +25,8 @@ namespace TesteBomTrato.Migrations
 
             migrationBuilder.InsertData(
                 table: "Processos",
-                columns: new[] { "Id", "Escritorio", "NomeReclamante", "NumeroProcesso", "ValorCausa" },
-                values: new object[] { 1, "LalaLand", "Kevin", 1, "1500" });
+                columns: new[] { "Id", "Ativo", "Escritorio", "NomeReclamante", "NumeroProcesso", "ValorCausa" },
+                values: new object[] { 1, true, "Guttenber", "Kevin", 1, "1500,00" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
