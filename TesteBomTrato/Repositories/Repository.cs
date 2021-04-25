@@ -1,4 +1,7 @@
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using TesteBomTrato.Data;
+using TesteBomTrato.Models;
 
 namespace TesteBomTrato.Repositories
 {
@@ -28,6 +31,27 @@ namespace TesteBomTrato.Repositories
         public bool SaveChanges()
         {
             return (_context.SaveChanges() > 0);
+        }
+
+        public Processo[] GetAllProcessos()
+        {
+            IQueryable<Processo> query = _context.Processos;
+
+            query = query.AsNoTracking()
+                            .OrderBy(p => p.Id);
+
+            return query.ToArray();
+        }
+        
+        public Processo GetProcessosById(int processoId)
+        {
+            IQueryable<Processo> query = _context.Processos;
+
+            query = query.AsNoTracking()
+                            .OrderBy(p => p.Id)
+                            .Where(processo => processo.Id == processoId);
+
+            return query.FirstOrDefault();
         }
     }
 }

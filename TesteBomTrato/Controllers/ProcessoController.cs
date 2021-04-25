@@ -11,14 +11,11 @@ namespace TesteBomTrato.Controllers
     [Route("api/[controller]")]
     public class ProcessoController : ControllerBase
     {
-        private readonly Context _context;
         public readonly IRepository _repo;
 
-        public ProcessoController(Context context, IRepository repo)
+        public ProcessoController(IRepository repo)
         {
-            _context = context;
             _repo = repo;
-
         }
 
         /// <summary>
@@ -26,13 +23,13 @@ namespace TesteBomTrato.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("byId/{id}")]
-        public IActionResult Get(int id)
+        [HttpGet("{id}")]
+        public IActionResult GetbyId(int id)
         {
-            var proc = _context.Processos.FirstOrDefault(p => p.Id == id);
-            if (proc == null) return BadRequest("Processo Não Encontrado");
+            var result = _repo.GetProcessosById(id);
+            if (result == null) return BadRequest("O Processo não foi Encontrado!");
 
-            return Ok(_context.Processos);
+            return Ok(result);
         }
 
         /// <summary>
@@ -42,7 +39,8 @@ namespace TesteBomTrato.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.Processos);
+            var result = _repo.GetAllProcessos();
+            return Ok(result);
         }
 
         /// <summary>
@@ -71,7 +69,7 @@ namespace TesteBomTrato.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Processo processo)
         {
-            var proc = _context.Processos.AsNoTracking().Where(p => p.Id == id).FirstOrDefault();
+            var proc = _repo.GetProcessosById(id);
             if (proc == null) return BadRequest("Processo Não Encontrado");
 
             _repo.Update(processo);
@@ -92,7 +90,7 @@ namespace TesteBomTrato.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Processo processo)
         {
-            var proc = _context.Processos.AsNoTracking().Where(p => p.Id == id).FirstOrDefault();
+            var proc = _repo.GetProcessosById(id);
             if (proc == null) return BadRequest("Processo Não Encontrado");
 
             _repo.Update(processo);
@@ -112,7 +110,7 @@ namespace TesteBomTrato.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var proc = _context.Processos.FirstOrDefault(p => p.Id == id);
+            var proc = _repo.GetProcessosById(id);
             if (proc == null) return BadRequest("Processo Não Encontrado");
 
             _repo.Delete(proc);
