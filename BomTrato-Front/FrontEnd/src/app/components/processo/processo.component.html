@@ -1,0 +1,31 @@
+<table class="table table-striped  table-hover " id="myTable">
+
+  <thead>
+    <tr>
+    <th>Número do Processo</th>
+    <th>Valor da Causa</th>
+    <th>Escritório</th>
+    <th>Reclamante</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let item of list">
+          <td>{{item.numeroProcesso}}</td>
+          <td>{{item.valorCausa}}</td>
+          <td>{{item.escritorio}}</td>
+          <td>{{item.nomeReclamante}}</td>
+          <td>
+            <div class="toggle-button-cover">
+              <div class="button-cover">
+                <div class="button r" id="button-1">
+                  <input type="checkbox" class="checkbox">
+                  <div class="knobs"></div>
+                  <div class="layer"></div>
+                </div>
+              </div>
+            </div>
+          </td>
+
+      </tr>
+  </tbody>
+</table>
